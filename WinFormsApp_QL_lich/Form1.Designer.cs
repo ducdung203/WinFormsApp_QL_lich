@@ -101,6 +101,7 @@
             Controls.Add(btDangnhap);
             Name = "Form1";
             Text = "Đăng Nhập";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -4,32 +4,29 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinFormsApp_QL_lich
 {
-    public partial class FormQL : Form
+    public partial class Form_GV : Form
     {
-        public FormQL()
+        public string ID_GV { get; set; }
+        public Form_GV(string id)
         {
             InitializeComponent();
+            ID_GV = id;  // Gán giá trị ID_GV
         }
 
-        private void btDangxuat_Click(object sender, EventArgs e)
+        
+
+        private void btn_dangxuat_Click(object sender, EventArgs e)
         {
             this.Close();
             Form1 f = new Form1();
             f.Show();
         }
-
-        private void FormQL_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private Form currentChildForm;
         private void OpenChildForm(Form childForm)
         {
@@ -47,35 +44,20 @@ namespace WinFormsApp_QL_lich
             childForm.Show();
         }
 
-        private void btn_qldn_Click(object sender, EventArgs e)
+        private void btn_ttcn_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Form_qldn());
-            label1.Text = btn_qldn.Text;
-
+            Form_ttcn form_ttcn = new Form_ttcn(ID_GV);  // Truyền ID_GV vào Form_ttcn
+            OpenChildForm(form_ttcn);
+            label1.Text = btn_ttcn.Text;
         }
 
-        private void btn_qltt_Click(object sender, EventArgs e)
+        private void btn_lichgv_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Form_qltt());
-            label1.Text = btn_qltt.Text;
+            Form_lichgv form_lichgv = new Form_lichgv(ID_GV);  // Truyền ID_GV vào Form_lichgv
+            OpenChildForm(form_lichgv);
+            label1.Text = btn_lichgv.Text;
         }
 
-        private void btn_qlL_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Form_qlL());
-            label1.Text = btn_qlL.Text;
-        }
-        private void btnQL_môn_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new QL_mon());
-            label1.Text = btnQL_môn.Text;
-
-        }
-        private void btnQl_khoa_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FormQL_khoa());
-            label1.Text = btnQl_khoa.Text;
-        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (currentChildForm != null)
@@ -84,7 +66,5 @@ namespace WinFormsApp_QL_lich
             }
             label1.Text = "Trang chủ";
         }
-
-       
     }
 }
